@@ -12,47 +12,47 @@
     <h1 class="text-3xl font-bold mb-6">Crear Nuevo Artículo</h1>
 
     <!-- Formulario -->
-    <form class="bg-white p-8 rounded-md shadow-md">
+    <form action="/" method="post" class="bg-white p-8 rounded-md shadow-md">
       <!-- Título del Artículo -->
       <div class="mb-4">
-        <label for="titulo" class="block text-sm font-semibold mb-2">Título del Artículo</label>
-        <input type="text" id="titulo" name="titulo" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="150" pattern="[a-zA-Z0-9.!?¿¡ ]+" required>
+        <label for="title" class="block text-sm font-semibold mb-2">Título del Artículo</label>
+        <input type="text" id="title" name="title" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="150" pattern="[a-zA-Z0-9.!?¿¡ ]+" required>
       </div>
 
       <!-- Palabras Clave -->
       <div class="mb-4">
-        <label for="palabras-clave" class="block text-sm font-semibold mb-2">Palabras Clave</label>
-        <textarea id="palabras-clave" name="palabras-clave" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required></textarea>
+        <label for="keyword" class="block text-sm font-semibold mb-2">Palabras Clave</label>
+        <textarea id="keyword" name="keyword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required></textarea>
       </div>
 
       <!-- Edad Mínima y Máxima -->
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <label for="edad-minima" class="block text-sm font-semibold mb-2">Edad Mínima</label>
-          <input type="text" id="edad-minima" name="edad-minima" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
+          <label for="minage" class="block text-sm font-semibold mb-2">Edad Mínima</label>
+          <input type="text" id="minage" name="minage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
         </div>
         <div>
-          <label for="edad-maxima" class="block text-sm font-semibold mb-2">Edad Máxima</label>
-          <input type="text" id="edad-maxima" name="edad-maxima" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
+          <label for="maxage" class="block text-sm font-semibold mb-2">Edad Máxima</label>
+          <input type="text" id="maxage" name="maxage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
         </div>
       </div>
 
       <!-- Imagen de Portada y Thumbnail -->
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
-          <label for="imagen-portada" class="block text-sm font-semibold mb-2">Imagen de Portada</label>
-          <input type="file" id="imagen-portada" name="imagen-portada" accept="image/*" class="w-full">
+          <label for="portrait" class="block text-sm font-semibold mb-2">Imagen de Portada</label>
+          <input type="file" id="portrait" name="portrait" accept="image/*" class="w-full">
         </div>
         <div>
-          <label for="imagen-thumbnail" class="block text-sm font-semibold mb-2">Imagen Thumbnail</label>
-          <input type="file" id="imagen-thumbnail" name="imagen-thumbnail" accept="image/*" class="w-full">
+          <label for="thumbnail" class="block text-sm font-semibold mb-2">Imagen Thumbnail</label>
+          <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="w-full">
         </div>
       </div>
 
       <!-- Síntesis del Artículo -->
       <div class="mb-4">
-        <label for="sintesis" class="block text-sm font-semibold mb-2">Síntesis del Artículo</label>
-        <textarea id="sintesis" name="sintesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required></textarea>
+        <label for="synthesis" class="block text-sm font-semibold mb-2">Síntesis del Artículo</label>
+        <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required></textarea>
       </div>
 
       <!-- Botón de Envío -->
