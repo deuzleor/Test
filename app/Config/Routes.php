@@ -5,4 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('articulos', 'articulos::index');
+$routes->get('/', 'Articulos::index');
+
+$routes->get('articulo', 'ArticulosDetail::index');
