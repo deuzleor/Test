@@ -12,7 +12,7 @@
     <h1 class="text-3xl font-bold mb-6">Crear Nuevo Artículo</h1>
 
     <!-- Formulario -->
-    <form action="/" method="post" class="bg-white p-8 rounded-md shadow-md">
+    <form action="/" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-md shadow-md" >
       <!-- Título del Artículo -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-semibold mb-2">Título del Artículo</label>
@@ -43,7 +43,7 @@
           <label for="portrait" class="block text-sm font-semibold mb-2">Imagen de Portada</label>
           <input type="file" id="portrait" name="portrait" accept="image/*" class="w-full">
         </div>
-        <div>
+        <div> 
           <label for="thumbnail" class="block text-sm font-semibold mb-2">Imagen Thumbnail</label>
           <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="w-full">
         </div>
