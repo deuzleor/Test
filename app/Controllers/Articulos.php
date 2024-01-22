@@ -9,6 +9,24 @@ class Articulos extends BaseController
 {
     public function nuevoArticulo()
     {
+        helper(['form', 'url']);
+
+        $validation = \Config\Services::validation();
+
+        $validation->setRules([
+            'title' => 'required|max_length[150]',
+            'keyword' => 'required|max_length[200]',
+            'minage' => 'numeric',
+            'maxage' => 'numeric',
+            'synthesis' => 'required|max_length[200]',
+            'content' => 'required|max_length[2500]',
+        ]);
+
+        if (!$this->validate($validation->getRules())) {
+            // Devuelve al formulario con errores de validación
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
         $model = new ArticuloModel();
 
         $data = [

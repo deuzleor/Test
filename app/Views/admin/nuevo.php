@@ -25,6 +25,23 @@
     </div>
 </nav>
 
+<?php if (session('errors')): ?>
+    <div style="background: mistyrose;
+    padding: 15px;
+    border-radius: 5px;
+    color: red;
+    margin: 15px auto;
+    max-width: 800px;">
+      <p><b>Todos los campos son requeridos</b></p>
+      <ul style="list-style: circle; padding-left:20px;">
+        <?php foreach (session('errors') as $error): ?>
+          <li>
+            <?= $error ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
   <div class="container mx-auto my-8">
     <h1 class="text-3xl font-bold mb-6">Crear Nuevo Artículo</h1>
 
@@ -33,24 +50,24 @@
       <!-- Título del Artículo -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-semibold mb-2">Título del Artículo</label>
-        <input type="text" id="title" name="title" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="150" required>
+        <input type="text" id="title" name="title" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="150" >
       </div>
 
       <!-- Palabras Clave -->
       <div class="mb-4">
         <label for="keyword" class="block text-sm font-semibold mb-2">Palabras Clave</label>
-        <textarea id="keyword" name="keyword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" required></textarea>
+        <textarea id="keyword" name="keyword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" ></textarea>
       </div>
 
       <!-- Edad Mínima y Máxima -->
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
           <label for="minage" class="block text-sm font-semibold mb-2">Edad Mínima</label>
-          <input type="text" id="minage" name="minage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
+          <input type="text" id="minage" name="minage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" >
         </div>
         <div>
           <label for="maxage" class="block text-sm font-semibold mb-2">Edad Máxima</label>
-          <input type="text" id="maxage" name="maxage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" required>
+          <input type="text" id="maxage" name="maxage" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" pattern="[0-9]+" >
         </div>
       </div>
 
@@ -69,13 +86,13 @@
       <!-- Síntesis del Artículo -->
       <div class="mb-4">
         <label for="synthesis" class="block text-sm font-semibold mb-2">Síntesis del Artículo</label>
-        <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" required></textarea>
+        <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" ></textarea>
       </div>
 
       <!-- Contenido del Artículo -->
       <div class="mb-4">
       <label for="content" class="block text-sm font-semibold mb-2">Contenido del Artículo</label>
-      <textarea id="content" name="content" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" required></textarea>
+      <textarea id="content" name="content" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" ></textarea>
       </div>
 
       <!-- Botón de Envío -->
