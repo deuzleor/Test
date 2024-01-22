@@ -12,7 +12,7 @@ class ArticulosDetail extends BaseController
         $articulo = $modelo->find($id);
 
         if (!$articulo) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('No se pudo encontrar');
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No se pudo encontrar la página solicitada');
         }
 
         return view('articulos_detail', ['articulo' => $articulo]);

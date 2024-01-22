@@ -15,6 +15,4 @@ $routes->post('/', 'Admin::saveArticle');
 
 $routes->get('articulos/listaArticulosPortada', 'Articulos::getUltimosArticulos');
 
-$routes->get('articulos/detalles/(:num)', 'Articulos::detalles/$1');
-
 $routes->get('articulo/(:segment)', 'ArticulosDetail::detalle/$1');

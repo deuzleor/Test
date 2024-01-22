@@ -52,6 +52,6 @@ class Admin extends Controller
 
         $model->update($lastInsertedId, ['portrait' => $nombrePortrait, 'thumbnail' => $nombreThumbnail]);
 
-        return redirect()->to('/');
+        return redirect()->to("/articulo/{$lastInsertedId}");
         }
 }

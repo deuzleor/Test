@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <title>Artículos</title>
+  <style>
+        .articulo-container {
+            transition: transform 0.3s;
+        }
+
+        .articulo-container:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
   <div class="container mx-auto my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -28,8 +37,12 @@
 
             // Crear elementos HTML para cada artículo
 
+            const enlaceDetalle = document.createElement('a');
+            enlaceDetalle.href = `/articulo/${articulo.id}`;
+            enlaceDetalle.style.textDecoration = 'none';
+
             const articuloDiv = document.createElement('div');
-            articuloDiv.classList.add('bg-white', 'p-6', 'rounded-md', 'shadow-md', 'mb-4');
+            articuloDiv.classList.add('articulo-container', 'bg-white', 'p-6', 'rounded-md', 'shadow-md', 'mb-4');
 
             const imagenThumbnail = document.createElement('img');
             imagenThumbnail.classList.add('w-full', 'h-48', 'object-cover', 'mb-4');
@@ -52,16 +65,15 @@
             sintesis.classList.add('text-gray-800', 'mb-4');
             sintesis.textContent = articulo.synthesis;
 
-            // ... Otros elementos según tu estructura ...
-
             // Agregar elementos al contenedor principal
             
-            articuloDiv.appendChild(imagenThumbnail);
-            articuloDiv.appendChild(titulo);
-            articuloDiv.appendChild(edad);
-            articuloDiv.appendChild(sintesis);
-            articuloDiv.appendChild(palabrasClave);
+            enlaceDetalle.appendChild(imagenThumbnail);
+            enlaceDetalle.appendChild(titulo);
+            enlaceDetalle.appendChild(edad);
+            enlaceDetalle.appendChild(sintesis);
+            enlaceDetalle.appendChild(palabrasClave);
 
+            articuloDiv.appendChild(enlaceDetalle);
             articulosContainer.appendChild(articuloDiv);
           });
         })
