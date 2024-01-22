@@ -113,7 +113,9 @@ class Articulos extends BaseController
     $Portrait = $this->request->getFile('portrait');
     $Thumbnail = $this->request->getFile('thumbnail');
 
-
+    // Verificar si se han subido nuevas imágenes
+    if ($Portrait->isValid() && $Thumbnail->isValid()) {
+        // Generar nuevos nombres de archivos con el ID del artículo
         $nombrePortrait = $Portrait->getRandomName();
         $nombreThumbnail = $Thumbnail->getRandomName();
 
@@ -125,6 +127,7 @@ class Articulos extends BaseController
         $data['portrait'] = $nombrePortrait;
         $data['thumbnail'] = $nombreThumbnail;
 
+    }
 
     // Actualizar el artículo en la base de datos
     $model->update($id, $data);

@@ -51,7 +51,7 @@
         <!-- Contenido del Artículo -->
         <div class="bg-white p-6 rounded-md shadow-md">
             <h2 class="text-xl font-bold mb-4">Contenido del Artículo</h2>
-            <p class="text-gray-600"><?= esc($articulo['content']) ?></p>
+            <p class="text-gray-600"><?= ($articulo['content']) ?></p>
         </div>
     </div>
 

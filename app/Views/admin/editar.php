@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tiny.cloud/1/501dei7i9bvkqmt7cfqiyayqgvvyhqswfdvfkf58xifejnml/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
   <title>Editar artículo</title>
 </head>
 <body class="bg-gray-100">
@@ -35,13 +37,13 @@
       <!-- Título del Artículo -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-semibold mb-2">Título del Artículo</label>
-        <input type="text" id="title" name="title" value="<?= esc($articulo['title']) ?>" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="150" pattern="[a-zA-Z0-9.!?¿¡ ]+" required>
+        <input type="text" id="title" name="title" value="<?= esc($articulo['title']) ?>" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" required>
       </div>
 
       <!-- Palabras Clave -->
       <div class="mb-4">
         <label for="keyword" class="block text-sm font-semibold mb-2">Palabras Clave</label>
-        <textarea id="keyword" name="keyword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required><?= esc($articulo['keyword']) ?></textarea>
+        <textarea id="keyword" name="keyword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" required><?= esc($articulo['keyword']) ?></textarea>
       </div>
 
       <!-- Edad Mínima y Máxima -->
@@ -71,7 +73,7 @@
       <!-- Síntesis del Artículo -->
       <div class="mb-4">
         <label for="synthesis" class="block text-sm font-semibold mb-2">Síntesis del Artículo</label>
-        <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required><?= esc($articulo['synthesis']) ?></textarea>
+        <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" required><?= esc($articulo['synthesis']) ?></textarea>
       </div>
 
       <!-- Contenido del Artículo -->
@@ -86,6 +88,12 @@
       </div>
     </form>
   </div>
-
+  <script>
+        tinymce.init({
+            selector: '#content',
+            menubar: false,  // Desactiva la barra de menú
+            toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist',
+        });
+  </script>
 </body>
 </html>
