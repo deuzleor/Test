@@ -7,24 +7,40 @@
     <title>Admin</title>
 </head>
 <body class="bg-gray-100">
+<nav class="flex items-center justify-between bg-white">
+    <!-- Logo -->
+    <div class="flex items-center ">
+        <a href="/"><div class="flex-shrink-0">
+            <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
+        </div></a>
+    </div>
+
+    <!-- Enlaces del menú -->
+    <div class="flex items-center space-x-4 pr-4">
+        <a href="/" class="text-black hover:text-gray-300">Artículos</a>
+        <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
+        <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
+    </div>
+</nav>
+
     <div class="container mx-auto my-8">
-        <!-- Título de la Página -->
         <h1 class="text-4xl font-bold mb-4">Admin</h1>
 
-        <!-- Texto Descriptivo -->
+        <div class="text-right mb-4">
+        <a href="/admin/nuevo" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">Crear nuevo artículo</a>
+    </div>
+
         <p class="mb-6">Listado de artículos</p>
 
         <!-- Listado de Artículos -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
             <div class="col-span-1 md:col-span-2 lg:col-span-1">
                 <div class="bg-white p-4 rounded-md shadow-md">
-                    <!-- Títulos -->
                     <div class="flex justify-between mb-4">
                         <div class="w-4/5 font-bold">Título</div>
                         <div class="w-1/5 font-bold">Acciones</div>
                     </div>
 
-                    <!-- Listado de Artículos -->
                     <ul id="articulos-list" class="list-none">
                         <!-- Aquí se cargarán los artículos dinámicamente usando JavaScript -->
                     </ul>
@@ -34,13 +50,15 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
         const articulosListContainer = document.getElementById('articulos-list');
+        const editarForm = document.getElementById('form-editar-articulo');
+        const editIdInput = document.getElementById('edit-id');
 
+        // Verificar si se hizo clic en un enlace de "Eliminar"
         articulosListContainer.addEventListener('click', function (event) {
             const target = event.target;
 
-            // Verificar si se hizo clic en un enlace de "Eliminar"
             if (target.tagName === 'A' && target.classList.contains('text-red-500')) {
                 event.preventDefault();
 
@@ -51,8 +69,8 @@
                 if (confirm('¿Seguro que quieres eliminar este artículo?')) {
                     // Realizar la solicitud para eliminar el artículo
                     fetch(`/articulos/eliminarArticulo/${id}`, {
-                            method: 'DELETE',
-                        })
+                        method: 'DELETE',
+                    })
                         .then(response => response.json())
                         .then(result => {
                             if (result.success) {
@@ -105,7 +123,8 @@
                 });
             })
             .catch(error => console.error('Error al obtener la lista de artículos:', error));
-        });
-    </script>
+    });
+</script>
+
 </body>
 </html>

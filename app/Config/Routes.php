@@ -21,6 +21,3 @@ $routes->get('articulos/listaArticulos', 'Articulos::listaArticulos');
 
 $routes->delete('articulos/eliminarArticulo/(:num)', 'Articulos::eliminarArticulo/$1');
 
-$routes->post('admin/actualizarArticulo', 'Admin::actualizarArticulo');
-
-

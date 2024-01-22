@@ -9,6 +9,4 @@ class ArticuloModel extends Model
     protected $table = 'articulos'; 
     protected $primaryKey = 'id'; 
     protected $allowedFields = ['title', 'keyword', 'minage', 'maxage', 'thumbnail', 'portrait', 'synthesis', 'content', 'created_at'];
-
-
 }

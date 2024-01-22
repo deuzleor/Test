@@ -16,6 +16,21 @@
     </style>
 </head>
 <body class="bg-gray-100">
+<nav class="flex items-center justify-between bg-white">
+    <!-- Logo -->
+    <div class="flex items-center ">
+        <a href="/"><div class="flex-shrink-0">
+            <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
+        </div></a>
+    </div>
+
+    <!-- Enlaces del menú -->
+    <div class="flex items-center space-x-4 pr-4">
+        <a href="/" class="text-black hover:text-gray-300">Artículos</a>
+        <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
+        <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
+    </div>
+</nav>
   <div class="container mx-auto my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- La lista de artículos se mostrará aquí -->
   </div>
