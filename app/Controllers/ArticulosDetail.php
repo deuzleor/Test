@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ArticuloModel;
 
 class ArticulosDetail extends BaseController
@@ -17,5 +18,4 @@ class ArticulosDetail extends BaseController
 
         return view('articulos_detail', ['articulo' => $articulo]);
     }
-
 }

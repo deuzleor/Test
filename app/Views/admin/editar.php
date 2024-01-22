@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.tiny.cloud/1/501dei7i9bvkqmt7cfqiyayqgvvyhqswfdvfkf58xifejnml/tinymce/5/tinymce.min.js"
-        referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/501dei7i9bvkqmt7cfqiyayqgvvyhqswfdvfkf58xifejnml/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <title>Editar artículo</title>
 </head>
+
 <body class="bg-gray-100">
-<nav class="flex items-center justify-between bg-white">
+  <nav class="flex items-center justify-between bg-white">
     <!-- Logo -->
     <div class="flex items-center ">
-        <a href="/"><div class="flex-shrink-0">
-            <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
-        </div></a>
+      <a href="/">
+        <div class="flex-shrink-0">
+          <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
+        </div>
+      </a>
     </div>
 
     <!-- Enlaces del menú -->
     <div class="flex items-center space-x-4 pr-4">
-        <a href="/" class="text-black hover:text-gray-300">Artículos</a>
-        <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
-        <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
+      <a href="/" class="text-black hover:text-gray-300">Artículos</a>
+      <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
+      <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
     </div>
-</nav>
+  </nav>
 
   <div class="container mx-auto my-8">
     <h1 class="text-3xl font-bold mb-6">Editar artículo</h1>
 
     <!-- Formulario -->
-      <form action="<?= base_url('articulos/actualizar/' . $articulo['id']) ?>" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-md shadow-md">
+    <form action="<?= base_url('articulos/actualizar/' . $articulo['id']) ?>" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-md shadow-md">
 
       <!-- ID del Artículo -->
       <input type="hidden" id="edit-id" name="id" value="<?= esc($articulo['id']) ?>">
@@ -89,11 +92,12 @@
     </form>
   </div>
   <script>
-        tinymce.init({
-            selector: '#content',
-            menubar: false,  // Desactiva la barra de menú
-            toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist',
-        });
+    tinymce.init({
+      selector: '#content',
+      menubar: false, // Desactiva la barra de menú
+      toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | bullist numlist',
+    });
   </script>
 </body>
+
 </html>

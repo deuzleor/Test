@@ -63,7 +63,7 @@ class Articulos extends BaseController
         $model->update($lastInsertedId, ['portrait' => $nombrePortrait, 'thumbnail' => $nombreThumbnail]);
 
         return redirect()->to("/articulo/{$lastInsertedId}");
-        }
+    }
 
     public function listaArticulosPortada()
     {
@@ -72,14 +72,14 @@ class Articulos extends BaseController
 
         return $this->response->setJSON($articulos);
     }
-    
+
     public function listaArticulos()
     {
         $model = new ArticuloModel();
         $articulos = $model->orderBy('created_at', 'DESC')->findAll();
 
         return $this->response->setJSON($articulos);
-    } 
+    }
 
     public function eliminarArticulo($id)
     {
@@ -115,45 +115,40 @@ class Articulos extends BaseController
     public function actualizarArticulo($id)
     {
 
-    $model = new ArticuloModel();
+        $model = new ArticuloModel();
 
-    $data = [
-        'title' => $this->request->getPost('title'),
-        'keyword' => $this->request->getPost('keyword'),
-        'minage' => $this->request->getPost('minage'),
-        'maxage' => $this->request->getPost('maxage'),
-        'synthesis' => $this->request->getPost('synthesis'),
-        'content' => $this->request->getPost('content'),
-        'created_at' => date('Y-m-d H:i:s'),
-    ];
+        $data = [
+            'title' => $this->request->getPost('title'),
+            'keyword' => $this->request->getPost('keyword'),
+            'minage' => $this->request->getPost('minage'),
+            'maxage' => $this->request->getPost('maxage'),
+            'synthesis' => $this->request->getPost('synthesis'),
+            'content' => $this->request->getPost('content'),
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
 
-    // Procesar archivos de imagen
-    $Portrait = $this->request->getFile('portrait');
-    $Thumbnail = $this->request->getFile('thumbnail');
+        // Procesar archivos de imagen
+        $Portrait = $this->request->getFile('portrait');
+        $Thumbnail = $this->request->getFile('thumbnail');
 
-    // Verificar si se han subido nuevas imágenes
-    if ($Portrait->isValid() && $Thumbnail->isValid()) {
-        // Generar nuevos nombres de archivos con el ID del artículo
-        $nombrePortrait = $Portrait->getRandomName();
-        $nombreThumbnail = $Thumbnail->getRandomName();
+        // Verificar si se han subido nuevas imágenes
+        if ($Portrait->isValid() && $Thumbnail->isValid()) {
+            // Generar nuevos nombres de archivos con el ID del artículo
+            $nombrePortrait = $Portrait->getRandomName();
+            $nombreThumbnail = $Thumbnail->getRandomName();
 
-        // Mover archivos a la carpeta adecuada
-        $Portrait->move('./uploads/', $nombrePortrait);
-        $Thumbnail->move('./uploads/', $nombreThumbnail);
+            // Mover archivos a la carpeta adecuada
+            $Portrait->move('./uploads/', $nombrePortrait);
+            $Thumbnail->move('./uploads/', $nombreThumbnail);
 
-        // Actualizar los nombres de archivo en la base de datos
-        $data['portrait'] = $nombrePortrait;
-        $data['thumbnail'] = $nombreThumbnail;
+            // Actualizar los nombres de archivo en la base de datos
+            $data['portrait'] = $nombrePortrait;
+            $data['thumbnail'] = $nombreThumbnail;
+        }
 
+        // Actualizar el artículo en la base de datos
+        $model->update($id, $data);
+
+        return redirect()->to('/');
     }
-
-    // Actualizar el artículo en la base de datos
-    $model->update($id, $data);
-
-    return redirect()->to('/');
-
-    }
-
 }
-
-

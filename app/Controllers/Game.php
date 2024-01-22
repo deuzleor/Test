@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Principal extends BaseController
+class Game extends BaseController
 {
     public function index(): string
     {
-        return view('articulos');
+        return view('game');
     }
 }

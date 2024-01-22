@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <title>Artículos</title>
   <style>
-        .articulo-container {
-            transition: transform 0.3s;
-        }
+    .articulo-container {
+      transition: transform 0.3s;
+    }
 
-        .articulo-container:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    .articulo-container:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
+
 <body class="bg-gray-100">
-<nav class="flex items-center justify-between bg-white">
+  <nav class="flex items-center justify-between bg-white">
     <!-- Logo -->
     <div class="flex items-center ">
-        <a href="/"><div class="flex-shrink-0">
-            <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
-        </div></a>
+      <a href="/">
+        <div class="flex-shrink-0">
+          <img src="<?= base_url('uploads/logo.png') ?>" alt="Logo" class="h-12 w-full">
+        </div>
+      </a>
     </div>
 
     <!-- Enlaces del menú -->
     <div class="flex items-center space-x-4 pr-4">
-        <a href="/" class="text-black hover:text-gray-300">Artículos</a>
-        <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
-        <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
+      <a href="/" class="text-black hover:text-gray-300">Artículos</a>
+      <a href="/juego" class="text-black hover:text-gray-300">Juego</a>
+      <a href="/admin" class="text-black hover:text-gray-300">Admin</a>
     </div>
-</nav>
+  </nav>
   <div class="container mx-auto my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- La lista de artículos se mostrará aquí -->
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
 
       // Realizar la solicitud al servicio REST de Articulos
 
@@ -81,7 +85,7 @@
             sintesis.textContent = articulo.synthesis;
 
             // Agregar elementos al contenedor principal
-            
+
             enlaceDetalle.appendChild(imagenThumbnail);
             enlaceDetalle.appendChild(titulo);
             enlaceDetalle.appendChild(edad);
@@ -96,4 +100,5 @@
     });
   </script>
 </body>
+
 </html>
