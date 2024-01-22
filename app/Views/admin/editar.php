@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <title>Crear Nuevo Artículo</title>
+  <title>Editar artículo</title>
 </head>
 <body class="bg-gray-100">
 
   <div class="container mx-auto my-8">
-    <h1 class="text-3xl font-bold mb-6">Crear Nuevo Artículo</h1>
+    <h1 class="text-3xl font-bold mb-6">Editar artículo</h1>
 
     <!-- Formulario -->
-    <form action="/articulos/nuevoArticulo" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-md shadow-md" >
+    <form action="/articulos/editarArticulo" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-md shadow-md" >
+    <input type="hidden" name="id" value="<?= $articulo['id'] ?>">
       <!-- Título del Artículo -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-semibold mb-2">Título del Artículo</label>
@@ -55,18 +56,11 @@
         <textarea id="synthesis" name="synthesis" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" maxlength="200" pattern="[a-zA-Z0-9.!?¿¡/\- ]+" required></textarea>
       </div>
 
-      <!-- Contenido del Artículo -->
-      <div class="mb-4">
-      <label for="content" class="block text-sm font-semibold mb-2">Contenido del Artículo</label>
-      <textarea id="content" name="content" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" required></textarea>
-      </div>
-
       <!-- Botón de Envío -->
       <div class="text-center">
         <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">Crear Artículo</button>
       </div>
     </form>
   </div>
-
 </body>
 </html>

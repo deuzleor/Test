@@ -35,47 +35,76 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // Realizar la solicitud al servicio REST de Articulos
-            fetch('/articulos/listaArticulos')
-                .then(response => response.json())
-                .then(articulos => {
-                    const articulosListContainer = document.getElementById('articulos-list');
+        const articulosListContainer = document.getElementById('articulos-list');
 
-                    articulos.forEach(articulo => {
+        articulosListContainer.addEventListener('click', function (event) {
+            const target = event.target;
 
-                        // Crear elementos HTML para cada artículo
-                        const listItem = document.createElement('li');
-                        listItem.classList.add('border-b', 'py-2', 'flex', 'justify-between', 'items-center');
+            // Verificar si se hizo clic en un enlace de "Eliminar"
+            if (target.tagName === 'A' && target.classList.contains('text-red-500')) {
+                event.preventDefault();
 
-                        const titulo = document.createElement('div');
-                        titulo.classList.add('w-4/5');
-                        titulo.textContent = articulo.title;
+                // Obtener el ID del artículo desde el atributo de datos del elemento padre (li)
+                const id = target.closest('li').dataset.articuloId;
 
-                        const acciones = document.createElement('div');
-                        acciones.classList.add('w-1/5');
-                        
-                        const editarLink = document.createElement('a');
-                        editarLink.href = '#';
-                        editarLink.classList.add('text-blue-500', 'mr-2');
-                        editarLink.textContent = 'Editar';
+                // Confirmar antes de eliminar
+                if (confirm('¿Seguro que quieres eliminar este artículo?')) {
+                    // Realizar la solicitud para eliminar el artículo
+                    fetch(`/articulos/eliminarArticulo/${id}`, {
+                            method: 'DELETE',
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                // Eliminar el elemento de la lista si la eliminación fue exitosa
+                                target.closest('li').remove();
+                            } else {
+                                console.error('Error al eliminar el artículo:', result.message);
+                            }
+                        })
+                        .catch(error => console.error('Error al realizar la solicitud de eliminación:', error));
+                }
+            }
+        });
 
-                        const eliminarLink = document.createElement('a');
-                        eliminarLink.href = '#';
-                        eliminarLink.classList.add('text-red-500');
-                        eliminarLink.textContent = 'Eliminar';
+        // Realizar la solicitud al servicio REST de Articulos
+        fetch('/articulos/listaArticulos')
+            .then(response => response.json())
+            .then(articulos => {
+                articulos.forEach(articulo => {
+                    // Crear elementos HTML para cada artículo
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('border-b', 'py-2', 'flex', 'justify-between', 'items-center');
+                    listItem.dataset.articuloId = articulo.id;
 
-                        acciones.appendChild(editarLink);
-                        acciones.appendChild(document.createTextNode(' | '));
-                        acciones.appendChild(eliminarLink);
+                    const titulo = document.createElement('div');
+                    titulo.classList.add('w-4/5');
+                    titulo.textContent = articulo.title;
 
-                        listItem.appendChild(titulo);
-                        listItem.appendChild(acciones);
+                    const acciones = document.createElement('div');
+                    acciones.classList.add('w-1/5');
 
-                        articulosListContainer.appendChild(listItem);
-                    });
-                })
-                .catch(error => console.error('Error al obtener la lista de artículos:', error));
+                    const editarLink = document.createElement('a');
+                    editarLink.href = '#';
+                    editarLink.classList.add('text-blue-500', 'mr-2');
+                    editarLink.textContent = 'Editar';
+
+                    const eliminarLink = document.createElement('a');
+                    eliminarLink.href = '#';
+                    eliminarLink.classList.add('text-red-500');
+                    eliminarLink.textContent = 'Eliminar';
+
+                    acciones.appendChild(editarLink);
+                    acciones.appendChild(document.createTextNode(' | '));
+                    acciones.appendChild(eliminarLink);
+
+                    listItem.appendChild(titulo);
+                    listItem.appendChild(acciones);
+
+                    articulosListContainer.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error al obtener la lista de artículos:', error));
         });
     </script>
 </body>

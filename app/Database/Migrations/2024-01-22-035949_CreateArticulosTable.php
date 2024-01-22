@@ -30,23 +30,26 @@ class CreateArticulosTable extends Migration
                 'type' => 'INT',
                 'constraint' => 3,
             ],
-            'portrait' => [
+            'thumbnail' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'thumbnail' => [
+            'portrait' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
             'synthesis' => [
                 'type' => 'TEXT',
             ],
+            'content' => [
+                'type' => 'TEXT',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
-            
         ]);
+
         $this->forge->addKey('id', true);
         $this->forge->createTable('articulos');
     }

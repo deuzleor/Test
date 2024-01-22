@@ -33,10 +33,10 @@
             </div>
         </div>
 
-        <!-- Síntesis del Artículo -->
+        <!-- Contenido del Artículo -->
         <div class="bg-white p-6 rounded-md shadow-md">
-            <h2 class="text-xl font-bold mb-4">Síntesis del Artículo</h2>
-            <p class="text-gray-600"><?= esc($articulo['synthesis']) ?></p>
+            <h2 class="text-xl font-bold mb-4">Contenido del Artículo</h2>
+            <p class="text-gray-600"><?= esc($articulo['content']) ?></p>
         </div>
     </div>
 
