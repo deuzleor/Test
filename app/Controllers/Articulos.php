@@ -14,4 +14,13 @@ class Articulos extends BaseController
 
         return $this->response->setJSON($articulos);
     }
+    
+    public function getArticulosList()
+    {
+        $model = new ArticuloModel();
+        $articulos = $model->orderBy('created_at', 'DESC')->findAll();
+
+        return $this->response->setJSON($articulos);
+    }
 }
+
