@@ -1,11 +1,21 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ArticuloModel;
 
 class ArticulosDetail extends BaseController
 {
-    public function index(): string
+    public function detalle($id)
     {
-        return view('articulos_detail');
+        $modelo = new ArticuloModel();
+
+        $articulo = $modelo->find($id);
+
+        if (!$articulo) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('No se pudo encontrar');
+        }
+
+        return view('articulos_detail', ['articulo' => $articulo]);
     }
+
 }
