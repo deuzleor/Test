@@ -41,6 +41,7 @@
                         <div class="w-1/5 font-bold">Acciones</div>
                     </div>
 
+
                     <ul id="articulos-list" class="list-none">
                         <!-- Aquí se cargarán los artículos dinámicamente usando JavaScript -->
                     </ul>
@@ -50,10 +51,8 @@
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const articulosListContainer = document.getElementById('articulos-list');
-        const editarForm = document.getElementById('form-editar-articulo');
-        const editIdInput = document.getElementById('edit-id');
+document.addEventListener('DOMContentLoaded', function () {
+    const articulosListContainer = document.getElementById('articulos-list');
 
         // Verificar si se hizo clic en un enlace de "Eliminar"
         articulosListContainer.addEventListener('click', function (event) {
@@ -85,6 +84,8 @@
             }
         });
 
+        
+
         // Realizar la solicitud al servicio REST de Articulos
         fetch('/articulos/listaArticulos')
             .then(response => response.json())
@@ -103,7 +104,7 @@
                     acciones.classList.add('w-1/5');
 
                     const editarLink = document.createElement('a');
-                    editarLink.href = '#';
+                    editarLink.href = `articulos/editar/${articulo.id}`;
                     editarLink.classList.add('text-blue-500', 'mr-2');
                     editarLink.textContent = 'Editar';
 

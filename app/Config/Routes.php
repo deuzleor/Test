@@ -21,3 +21,9 @@ $routes->get('articulos/listaArticulos', 'Articulos::listaArticulos');
 
 $routes->delete('articulos/eliminarArticulo/(:num)', 'Articulos::eliminarArticulo/$1');
 
+$routes->get('articulos/editar/(:segment)', 'Articulos::editarArtociculo/$1');
+$routes->post('articulos/actualizar/(:segment)', 'Articulos::actualizarArticulo/$1');
+
+
+
+

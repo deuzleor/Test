@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ArticuloModel;
 use CodeIgniter\Controller;
 
 class Admin extends Controller
@@ -15,5 +16,4 @@ class Admin extends Controller
     {
         return view('admin/nuevo');
     }
-
 }
